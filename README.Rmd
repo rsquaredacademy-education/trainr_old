@@ -1,0 +1,20 @@
+---
+output:
+  md_document:
+    variant: markdown_github
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+# trainr
+
+The goal of trainr is to offer interactive tutorials built on top of the [learnr](https://rstudio.github.io/learnr/) package.
+
