@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+<meta name="progressive" content="false" />
+<meta name="allow-skip" content="false" />
+
+<title>Matrix</title>
+
+
+<!-- highlightjs -->
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+</head>
+
+<body>
+
+
+
+<div class="pageContent band">
+<div class="bandContent page">
+
+<div class="topics">
+
+<div id="section-matrix" class="section level2">
+<h2>Matrix</h2>
+<p>In R, a matrix is a collection of elements of the same data type (numeric, character, or logical) arranged into a fixed number of rows and columns. Since you are only working with rows and columns, a matrix is called two-dimensional.</p>
+<p>You can construct a matrix in R with the <code>matrix()</code> function. Consider the following example:</p>
+<p><code>matrix(1:9, byrow = TRUE, nrow = 3)</code></p>
+<p>In the <code>matrix()</code> function:</p>
+<ul>
+<li>The first argument is the collection of elements that R will arrange into the rows and columns of the matrix. Here, we use <code>1:9</code> which is a shortcut for <code>c(1, 2, 3, 4, 5, 6, 7, 8, 9)</code>.</li>
+<li>The argument <code>byrow</code> indicates that the matrix is filled by the rows. If we want the matrix to be filled by the columns, we just place <code>byrow = FALSE</code>.</li>
+<li>The third argument <code>nrow</code> indicates that the matrix should have three rows.</li>
+</ul>
+<div id="section-instructions" class="section level4">
+<h4>Instructions</h4>
+<p>Construct a matrix with 3 rows containing the numbers 1 up to 9, filled row-wise.</p>
+<div class="tutor-exercise" data-label="matrix1" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct a matrix with 3 rows that contain the numbers 1 up to 9</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix1-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>matrix(data = c(1:9), byrow = TRUE, nrow = 3)</code></pre>
+</div>
+</div>
+</div>
+<div id="section-analyzing-matrices" class="section level2">
+<h2>Analyzing Matrices</h2>
+<p>It is now time to get your hands dirty. In the following exercises you will analyze the box office numbers of the Star Wars franchise. May the force be with you!</p>
+<p>In the editor, three vectors are defined. Each one represents the box office numbers from the first three Star Wars movies. The first element of each vector indicates the US box office revenue, the second element refers to the Non-US box office (source: Wikipedia).</p>
+<p>In this exercise, you’ll combine all these figures into a single vector. Next, you’ll build a matrix from this vector.</p>
+<div id="section-instructions-1" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Use <code>c(new_hope, empire_strikes, return_jedi)</code> to combine the three vectors into one vector. Call this vector <code>box_office</code>.</li>
+<li>Construct a matrix with 3 rows, where each row represents a movie. Use the <code>matrix()</code> function to this. The first argument is the vector <code>box_office</code>, containing all box office figures. Next, you’ll have to specify <code>nrow = 3</code> and <code>byrow = TRUE</code>. Name the resulting matrix <code>star_wars_matrix</code>.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix2" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Box office Star Wars (in millions!)
+new_hope &lt;- c(460.998, 314.4)
+empire_strikes &lt;- c(290.475, 247.900)
+return_jedi &lt;- c(309.306, 165.8)
+
+# Create box_office
+box_office &lt;- 
+
+# Construct star_wars_matrix
+star_wars_matrix &lt;- 
+
+# Print out star_wars_matrix </code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix2-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>box_office &lt;- c(new_hope, empire_strikes, return_jedi)
+star_wars_matrix &lt;- matrix(data = box_office, byrow = TRUE, nrow = 3)
+star_wars_matrix</code></pre>
+</div>
+</div>
+</div>
+<div id="section-naming-a-matrix" class="section level2">
+<h2>Naming a Matrix</h2>
+<p>To help you remember what is stored in <code>star_wars_matrix</code>, you would like to add the names of the movies for the rows. Not only does this help you to read the data, but it is also useful to select certain elements from the matrix.</p>
+<p>Similar to vectors, you can add names for the rows and the columns of a matrix</p>
+<p>We went ahead and prepared two vectors for you: <code>region</code>, and <code>titles</code>. You will need these vectors to name the columns and rows of star_wars_matrix, respectively.</p>
+<div id="section-instructions-2" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Use <code>colnames()</code> to name the columns of <code>star_wars_matrix</code> with the region vector.</li>
+<li>Use <code>rownames()</code> to name the rows of <code>star_wars_matrix</code> with the titles vector.</li>
+<li>Print out <code>star_wars_matrix</code> to see the result of your work.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix3" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Box office Star Wars (in millions!)
+new_hope &lt;- c(460.998, 314.4)
+empire_strikes &lt;- c(290.475, 247.900)
+return_jedi &lt;- c(309.306, 165.8)
+
+# Construct matrix
+star_wars_matrix &lt;- matrix(c(new_hope, empire_strikes, return_jedi), nrow = 3, byrow = TRUE)
+
+# Vectors region and titles, used for naming
+region &lt;- c(&quot;US&quot;, &quot;non-US&quot;)
+titles &lt;- c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;)
+
+# Name the columns with region
+
+
+# Name the rows with titles
+
+
+# Print out star_wars_matrix</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix3-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>colnames(star_wars_matrix) &lt;- region
+rownames(star_wars_matrix) &lt;- titles
+star_wars_matrix</code></pre>
+</div>
+</div>
+</div>
+<div id="section-case-study---1" class="section level2">
+<h2>Case Study - 1</h2>
+<p>The single most important thing for a movie in order to become an instant legend in Tinseltown is its worldwide box office figures.</p>
+<p>To calculate the total box office revenue for the three Star Wars movies, you have to take the sum of the US revenue column and the non-US revenue column.</p>
+<p>In R, the function <code>rowSums()</code> conveniently calculates the totals for each row of a matrix. This function creates a new vector:</p>
+<p><code>rowSums(my_matrix)</code></p>
+<div id="section-instructions-3" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Calculate the worldwide box office figures for the three movies and put these in the vector named <code>worldwide_vector</code>.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix4" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+# Calculate worldwide box office figures
+worldwide_vector &lt;- 
+
+# Print out worldwide_vector</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix4-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>worldwide_vector &lt;- rowSums(star_wars_matrix)
+world_wide_vector</code></pre>
+</div>
+</div>
+</div>
+<div id="section-add-column-to-matrix" class="section level2">
+<h2>Add Column to Matrix</h2>
+<p>In the previous exercise you calculated the vector that contained the worldwide box office receipt for each of the three Star Wars movies. However, this vector is not yet part of <code>star_wars_matrix</code>.</p>
+<p>You can add a column or multiple columns to a matrix with the <code>cbind()</code> function, which merges matrices and/or vectors together by column. For example:</p>
+<p><code>big_matrix &lt;- cbind(matrix1, matrix2, vector1 ...)</code></p>
+<div id="section-instructions-4" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Add worldwide_vector as a new column to the <code>star_wars_matrix</code> and assign the result to <code>all_wars_matrix</code>. Use the <code>cbind()</code> function.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix5" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+# The worldwide box office figures
+worldwide_vector &lt;- rowSums(star_wars_matrix)
+
+# Bind the new variable worldwide_vector as a column to star_wars_matrix
+all_wars_matrix &lt;- 
+
+# print all_wars_matrix</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix5-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>all_wars_matrix &lt;- cbind(star_wars_matrix, worldwide_vector)
+all_wars_matrix</code></pre>
+</div>
+</div>
+</div>
+<div id="section-add-rows-to-matrix" class="section level2">
+<h2>Add Rows to Matrix</h2>
+<p>Just like every action has a reaction, every <code>cbind()</code> has an <code>rbind()</code>. (We admit, we are pretty bad with metaphors.)</p>
+<p>Your R workspace, where all variables you defined ‘live’ (check out what a workspace is), has already been initialized and contains two matrices:</p>
+<ul>
+<li><code>star_wars_matrix</code> that we have used all along, with data on the first trilogy,</li>
+<li><code>star_wars_matrix2</code>, with similar data for the second trilogy.</li>
+</ul>
+<p>Type the name of these matrices in the console and hit Enter if you want to have a closer look. If you want to check out the contents of the workspace, you can type <code>ls()</code> in the console.</p>
+<div id="section-instructions-5" class="section level4">
+<h4>Instructions</h4>
+<p>Use rbind() to paste together star_wars_matrix and star_wars_matrix2, in this order. Assign the resulting matrix to all_wars_matrix.</p>
+<div class="tutor-exercise" data-label="matrix6" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+box_office2 &lt;- c(474.5, 552.5, 310.7, 338.7, 380.3, 468.5)
+star_wars_matrix2 &lt;- matrix(box_office2, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+
+# Combine both Star Wars trilogies in one matrix
+all_wars_matrix &lt;- 
+
+# print all_wars_matrix</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix6-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>all_wars_matrix &lt;- rbind(star_wars_matrix, star_wars_matrix2)
+all_wars_matrix</code></pre>
+</div>
+</div>
+</div>
+<div id="section-case-study---2" class="section level2">
+<h2>Case Study - 2</h2>
+<p>Just like every <code>cbind()</code> has a <code>rbind()</code>, every <code>colSums()</code> has a <code>rowSums()</code>. Your R workspace already contains the <code>all_wars_matrix</code> that you constructed in the previous exercise; type <code>all_wars_matrix</code> to have another look. Let’s now calculate the total box office revenue for the entire saga.</p>
+<div id="section-instructions-6" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Calculate the total revenue for the US and the non-US region and assign <code>total_revenue_vector</code>. You can use the <code>colSums()</code> function.</li>
+<li>Print out <code>total_revenue_vector</code> to have a look at the results.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix7" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+box_office2 &lt;- c(474.5, 552.5, 310.7, 338.7, 380.3, 468.5)
+star_wars_matrix2 &lt;- matrix(box_office2, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+
+# Combine both Star Wars trilogies in one matrix
+all_wars_matrix &lt;- rbind(star_wars_matrix, star_wars_matrix2)
+
+# Total revenue for US and non-US
+total_revenue_vector &lt;- 
+  
+# Print out total_revenue_vector</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix7-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>total_revenue_vector &lt;- colSums(all_wars_matrix)
+total_revenue_vector</code></pre>
+</div>
+</div>
+</div>
+<div id="section-selection" class="section level2">
+<h2>Selection</h2>
+<p>Similar to vectors, you can use the square brackets <code>[ ]</code> to select one or multiple elements from a matrix. Whereas vectors have one dimension, matrices have two dimensions. You should therefore use a comma to separate that what to select from the rows from that what you want to select from the columns. For example:</p>
+<ul>
+<li><code>my_matrix[1,2]</code> selects the element at the first row and second column.</li>
+<li><code>my_matrix[1:3,2:4]</code> results in a matrix with the data on the rows 1, 2, 3 and columns 2, 3, 4.</li>
+</ul>
+<p>If you want to select all elements of a row or a column, no number is needed before or after the comma, respectively:</p>
+<ul>
+<li><code>my_matrix[,1]</code> selects all elements of the first column.</li>
+<li><code>my_matrix[1,]</code> selects all elements of the first row.</li>
+</ul>
+<p>Back to Star Wars with this newly acquired knowledge! As in the previous exercise, <code>all_wars_matrix</code> is already available in your workspace.</p>
+<div id="section-instructions-7" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Select the non-US revenue for all movies (the entire second column of <code>all_wars_matrix</code>), store the result as <code>non_us_all</code>.</li>
+<li>Use <code>mean()</code> on non_us_all to calculate the average non-US revenue for all movies. Simply print out the result.</li>
+<li>This time, select the non-US revenue for the first two movies in all_wars_matrix. Store the result as <code>non_us_some</code>.</li>
+<li>Use <code>mean()</code> again to print out the average of the values in <code>non_us_some</code>.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix8" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+box_office2 &lt;- c(474.5, 552.5, 310.7, 338.7, 380.3, 468.5)
+star_wars_matrix2 &lt;- matrix(box_office2, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+
+# Combine both Star Wars trilogies in one matrix
+all_wars_matrix &lt;- rbind(star_wars_matrix, star_wars_matrix2)
+
+# Select the non-US revenue for all movies
+non_us_all &lt;- 
+  
+# Average non-US revenue
+
+  
+# Select the non-US revenue for first two movies
+non_us_some &lt;- 
+  
+# Average non-US revenue for first two movies</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix8-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>non_us_all &lt;- all_wars_matrix[, 2]
+mean(non_us_all)
+non_us_some &lt;- all_wars_matrix[c(1, 2), 2]
+mean(non_us_some)</code></pre>
+</div>
+</div>
+</div>
+<div id="section-matrix-computations---1" class="section level2">
+<h2>Matrix Computations - 1</h2>
+<p>Similar to what you have learned with vectors, the standard operators like <code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, etc. work in an element-wise way on matrices in R.</p>
+<p>For example, <code>2 * my_matrix</code> multiplies each element of <code>my_matrix</code> by two.</p>
+<p>As a newly-hired data analyst for Lucasfilm, it is your job is to find out how many visitors went to each movie for each geographical area. You already have the total revenue figures in <code>all_wars_matrix</code>. Assume that the price of a ticket was 5 dollars. Simply dividing the box office numbers by this ticket price gives you the number of visitors.</p>
+</div>
+<div id="section-instructions-8" class="section level2">
+<h2>Instructions</h2>
+<ul>
+<li>Divide <code>all_wars_matrix</code> by 5, giving you the number of visitors in millions. Assign the resulting matrix to <code>visitors</code>.</li>
+<li>Print out <code>visitors</code> so you can have a look.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix9" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+box_office2 &lt;- c(474.5, 552.5, 310.7, 338.7, 380.3, 468.5)
+star_wars_matrix2 &lt;- matrix(box_office2, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+
+# Combine both Star Wars trilogies in one matrix
+all_wars_matrix &lt;- rbind(star_wars_matrix, star_wars_matrix2)
+
+# Estimate the visitors
+visitors &lt;- 
+  
+# Print the estimate to the console</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix9-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>visitors &lt;- all_wars_matrix / 5
+visitors</code></pre>
+</div>
+</div>
+<div id="section-matrix-computations---2" class="section level2">
+<h2>Matrix Computations - 2</h2>
+<p>Just like <code>2 * my_matrix</code> multiplied every element of <code>my_matrix</code> by two, <code>my_matrix1 * my_matrix2</code> creates a matrix where each element is the product of the corresponding elements in <code>my_matrix1</code> and <code>my_matrix2</code>.</p>
+<p>After looking at the result of the previous exercise, big boss Lucas points out that the ticket prices went up over time. He asks to redo the analysis based on the prices you can find in <code>ticket_prices_matrix</code> (source: imagination).</p>
+<p>Those who are familiar with matrices should note that this is not the standard matrix multiplication for which you should use <code>%*%</code> in R.</p>
+<div id="section-instructions-9" class="section level4">
+<h4>Instructions</h4>
+<ul>
+<li>Divide <code>all_wars_matrix</code> by <code>ticket_prices_matrix</code> to get the estimated number of US and non-US visitors for the six movies. Assign the result to visitors.</li>
+<li>From the <code>visitors</code> matrix, select the entire first column, representing the number of visitors in the US. Store this selection as <code>us_visitors</code>.</li>
+<li>Calculate the average number of US visitors; print out the result.</li>
+</ul>
+<div class="tutor-exercise" data-label="matrix10" data-caption="Matrix" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code># Construct star_wars_matrix
+box_office &lt;- c(460.998, 314.4, 290.475, 247.900, 309.306, 165.8)
+star_wars_matrix &lt;- matrix(box_office, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+box_office2 &lt;- c(474.5, 552.5, 310.7, 338.7, 380.3, 468.5)
+star_wars_matrix2 &lt;- matrix(box_office2, nrow = 3, byrow = TRUE,
+                           dimnames = list(c(&quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                                           c(&quot;US&quot;, &quot;non-US&quot;)))
+
+ticket_prices &lt;- c(5, 5, 6, 6, 7, 7, 4, 4, 4.5, 4.5, 4.9, 4.9)
+ticket_prices_matrix &lt;- matrix(ticket_prices, nrow = 6, byrow = TRUE,
+                           dimnames = list(c(&quot;A New Hope&quot;, &quot;The Empire Strikes Back&quot;, &quot;Return of the Jedi&quot;,
+                           &quot;The Phantom Menace&quot;, &quot;Attack of the Clones&quot;, &quot;Revenge of the Sith&quot;), 
+                          c(&quot;US&quot;, &quot;non-US&quot;)))
+
+
+# all_wars_matrix and ticket_prices_matrix are available in your workspace
+all_wars_matrix
+ticket_prices_matrix
+
+# Estimated number of visitors
+visitors &lt;- 
+
+# US visitors
+us_visitors &lt;- 
+
+# Average number of US visitors</code></pre>
+<script type="application/json" data-opts-chunk="1">{"fig.width":6.5,"fig.height":4,"fig.retina":2,"fig.align":"default","fig.keep":"high","fig.show":"asis","out.width":624,"warning":true,"error":false,"message":true,"exercise.df_print":"paged","exercise.timelimit":0,"exercise.checker":"NULL"}</script>
+</div>
+<div class="tutor-exercise-support" data-label="matrix10-solution" data-caption="Sandbox" data-completion="0" data-diagnostics="0" data-lines="0">
+<pre class="text"><code>visitors &lt;- all_wars_matrix / ticket_prices_matrix
+us_visitors &lt;- visitors[, 1]
+mean(us_visitors)</code></pre>
+</div>
+
+<script type="application/shiny-prerendered" data-context="server-start">
+library(tutor)
+tutor_options(exercise.timelimit = 0, exercise.cap = 'Sandbox')
+knitr::opts_chunk$set(echo = FALSE)
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+tutor:::register_http_handlers(session, metadata = NULL)
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix1-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix1-code-editor`)), session)
+output$`tutor-exercise-matrix1-output` <- renderUI({
+  `tutor-exercise-matrix1-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix2-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix2-code-editor`)), session)
+output$`tutor-exercise-matrix2-output` <- renderUI({
+  `tutor-exercise-matrix2-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix3-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix3-code-editor`)), session)
+output$`tutor-exercise-matrix3-output` <- renderUI({
+  `tutor-exercise-matrix3-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix4-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix4-code-editor`)), session)
+output$`tutor-exercise-matrix4-output` <- renderUI({
+  `tutor-exercise-matrix4-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix5-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix5-code-editor`)), session)
+output$`tutor-exercise-matrix5-output` <- renderUI({
+  `tutor-exercise-matrix5-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix6-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix6-code-editor`)), session)
+output$`tutor-exercise-matrix6-output` <- renderUI({
+  `tutor-exercise-matrix6-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix7-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix7-code-editor`)), session)
+output$`tutor-exercise-matrix7-output` <- renderUI({
+  `tutor-exercise-matrix7-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix8-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix8-code-editor`)), session)
+output$`tutor-exercise-matrix8-output` <- renderUI({
+  `tutor-exercise-matrix8-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix9-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix9-code-editor`)), session)
+output$`tutor-exercise-matrix9-output` <- renderUI({
+  `tutor-exercise-matrix9-result`()
+})
+</script>
+ 
+<script type="application/shiny-prerendered" data-context="server">
+`tutor-exercise-matrix10-result` <- tutor:::setup_exercise_handler(reactive(req(input$`tutor-exercise-matrix10-code-editor`)), session)
+output$`tutor-exercise-matrix10-output` <- renderUI({
+  `tutor-exercise-matrix10-result`()
+})
+</script>
+ <!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery-1.11.3"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap-3.3.5"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/cerulean.min.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["pagedtable"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pagedtable-1.1"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["js/pagedtable.js"]},{"type":"character","attributes":{},"value":["css/pagedtable.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs-1.1"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["textmate.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor.js"]},{"type":"character","attributes":{},"value":["tutor.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor-autocompletion"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor-autocompletion.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor-diagnostics"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor-diagnostics.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor-tutorial-format"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmarkdown/templates/tutorial/resources"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutorial-format.js"]},{"type":"character","attributes":{},"value":["tutorial-format.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery-1.11.3"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["4.5.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/font-awesome-4.5.0"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["css/font-awesome.min.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["rmarkdown"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["localforage"]},{"type":"character","attributes":{},"value":["1.4.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/localforage"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["localforage.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor.js"]},{"type":"character","attributes":{},"value":["tutor.css"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor-autocompletion"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor-autocompletion.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutor-diagnostics"]},{"type":"character","attributes":{},"value":["0.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutor"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["tutor-diagnostics.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","all_files","package"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL","attributes":{},"value":{}},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"NULL","attributes":{},"value":{}},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["tutor"]}]}]}
+</script>
+<!--/html_preserve-->
+</div>
+</div>
+
+</div> <!-- topics -->
+
+<div class="topicsContainer">
+<div class="topicsPositioner">
+<div class="band">
+<div class="bandContent topicsListContainer">
+
+<!-- begin doc-metadata -->
+<div id="doc-metadata">
+<h2 class="title toc-ignore" style="display:none;">Matrix</h2>
+</div>
+<!-- end doc-metadata -->
+
+</div> <!-- bandContent.topicsListContainer -->
+</div> <!-- band -->
+</div> <!-- topicsPositioner -->
+</div> <!-- topicsContainer -->
+
+
+</div> <!-- bandContent page -->
+</div> <!-- pageContent band -->
+
+
+
+
+<script>
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+</script>
+
+
+
+</body>
+
+</html>
