@@ -1,0 +1,17 @@
+Package: trainr
+Type: Package
+Title: Interactive Tutorials 
+Version: 0.1.0
+Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"))
+Description: Interactive tutorials to learn R and statistics built using the
+    learnr package.
+Depends:
+    R(>= 3.2.4)
+Imports:
+    learnr,
+    tibble,
+    pingr
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.0.1
