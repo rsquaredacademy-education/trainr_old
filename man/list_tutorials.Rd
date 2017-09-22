@@ -2,10 +2,10 @@
 % Please edit documentation in R/tutorials.R
 \name{list_tutorials}
 \alias{list_tutorials}
-\title{List Tutorials}
+\title{Display Tutorials}
 \usage{
-list_tutorials()
+list_tutorials(example)
 }
 \description{
-List all the tutorials available
+Show all tutorials
 }
