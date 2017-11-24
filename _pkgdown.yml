@@ -1,0 +1,38 @@
+templates:
+  params:
+    bootswatch: cosmo
+
+navbar:
+  title: "trainr"
+  type: inverse
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "Reference"
+      menu:
+        - text: "Functions"
+          href: reference/index.html
+
+  right:
+   - icon: fa-github
+     href: https://github.com/rsquaredacademy/trainr
+
+
+home:
+  links:
+  - text: Learn more
+    href: http://www.rsquaredacademy.com
+
+
+reference:
+- title: List of tuorials
+
+  contents:
+  - learn_tutorials_list
+
+
+- title: Tutorials
+
+  contents:
+  - learn_dplyr
+  - learn_matrix
