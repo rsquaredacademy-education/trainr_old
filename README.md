@@ -1,5 +1,30 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-trainr
-======
+trainr: Interactive Tutorials
+-----------------------------
+
+**Author:** [Aravind Hebbali]()<br/> **License:** [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0)
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/trainr)](https://cran.r-project.org/package=trainr) [![Travis build status](https://travis-ci.org/rsquaredacademy/trainr.svg?branch=master)](https://travis-ci.org/rsquaredacademy/trainr) [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/rsquaredacademy/trainr?branch=master&svg=true)](https://ci.appveyor.com/project/rsquaredacademy/trainr) [![Coverage Status](https://img.shields.io/codecov/c/github/rsquaredacademy/trainr/master.svg)](https://codecov.io/github/rsquaredacademy/trainr?branch=master) ![](https://img.shields.io/badge/lifecycle-experimental-orange.svg)
+
+Overview
+--------
 
 The goal of trainr is to offer interactive tutorials built on top of the [learnr](https://rstudio.github.io/learnr/) package.
+
+Installation
+------------
+
+You can install trainr from github with:
+
+``` r
+# the development version from github
+# install.packages("remotes")
+remotes::install_github("rsquaredacademy/olsrr")
+```
+
+Consistent Prefix
+-----------------
+
+trainr uses consistent prefix `learn_` for easy tab completion.
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
