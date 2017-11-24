@@ -2,16 +2,24 @@ Package: trainr
 Type: Package
 Title: Interactive Tutorials 
 Version: 0.1.0
-Authors@R: person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre"))
-Description: Interactive tutorials to learn R and statistics built using the
-    learnr package.
+Authors@R: c(
+    person("Aravind", "Hebbali", email = "hebbali.aravind@gmail.com", role = c("aut", "cre")),
+    person("Rsquared", "Academy", role = c("cph", "fnd"))
+    )
+Description: Interactive tutorials to learn R and statistics built using the learnr package.
 Depends:
     R(>= 3.2.4)
 Imports:
     learnr,
     tibble,
     pingr
+Suggests: 
+    dplyr,
+    readr
 License: Apache License 2.0 + file LICENSE
+URL: https://rsquaredacademy.github.io/trainr/, https://github.com/rsquaredacademy/trainr
+BugReports: https://github.com/rsquaredacademy/trainr/issues
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1
+
