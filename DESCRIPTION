@@ -12,11 +12,13 @@ Depends:
 Imports:
     learnr,
     tibble,
-    pingr
+    pingr,
+    cli,
+    crayon
 Suggests: 
     dplyr,
     readr
-License: Apache License 2.0 + file LICENSE
+License: MIT + file LICENSE
 URL: https://rsquaredacademy.github.io/trainr/, https://github.com/rsquaredacademy/trainr
 BugReports: https://github.com/rsquaredacademy/trainr/issues
 Encoding: UTF-8
