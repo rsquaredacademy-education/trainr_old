@@ -4,7 +4,7 @@
 \alias{learn_tutorials_list}
 \title{Display Tutorials}
 \usage{
-learn_tutorials_list(example)
+learn_tutorials_list()
 }
 \description{
 Show all tutorials
