@@ -4,7 +4,10 @@
 ^README-.*\.png$
 ^CONDUCT\.md$
 ^appveyor\.yml$
+^codecov\.yml$
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^_pkgdown\.yml$
-^doc$
+^docs$
+^LICENSE$
+^LICENSE\.md$
