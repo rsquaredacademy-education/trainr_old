@@ -2,6 +2,6 @@
 
 export(learn_dplyr)
 export(learn_matrix)
-export(list_tutorials)
+export(learn_tutorials_list)
 importFrom(learnr,run_tutorial)
 importFrom(pingr,ping)
