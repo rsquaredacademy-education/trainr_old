@@ -3,5 +3,8 @@
 export(learn_dplyr)
 export(learn_matrix)
 export(learn_tutorials_list)
+importFrom(cli,rule)
+importFrom(crayon,blue)
+importFrom(crayon,red)
 importFrom(learnr,run_tutorial)
 importFrom(pingr,ping)
