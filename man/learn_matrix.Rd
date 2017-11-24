@@ -2,7 +2,7 @@
 % Please edit documentation in R/launch.R
 \name{learn_matrix}
 \alias{learn_matrix}
-\title{Launch Matrix}
+\title{Learn Matrix}
 \usage{
 learn_matrix()
 }

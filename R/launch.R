@@ -1,7 +1,7 @@
 #' @importFrom learnr run_tutorial
 #' @importFrom pingr ping
-#' @title Launch Tutorials
-#' @description Launch tutorials
+#' @title Learn dplyr
+#' @description dplyr tutorial
 #' @export
 #'
 learn_dplyr <- function() {
@@ -11,7 +11,7 @@ learn_dplyr <- function() {
   learnr::run_tutorial(name = 'dplyr-part-1', package = 'practicer')
 }
 
-#' @title Launch Matrix
+#' @title Learn Matrix
 #' @description Matrix tutorial
 #' @export
 #'

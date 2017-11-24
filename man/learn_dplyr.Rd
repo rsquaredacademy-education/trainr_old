@@ -2,10 +2,10 @@
 % Please edit documentation in R/launch.R
 \name{learn_dplyr}
 \alias{learn_dplyr}
-\title{Launch Tutorials}
+\title{Learn dplyr}
 \usage{
 learn_dplyr()
 }
 \description{
-Launch tutorials
+dplyr tutorial
 }
